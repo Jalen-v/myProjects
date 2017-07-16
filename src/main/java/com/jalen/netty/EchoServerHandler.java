@@ -15,16 +15,19 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter{
     private static ArrayList<String> arrayList = new ArrayList<String>();
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        allChannels.add(ctx.channel());
-        System.out.println(allChannels.size());
-        arrayList.add("str1");
-        System.out.println(arrayList.size());
+    	System.out.println(ctx.channel().isActive());
+//        allChannels.add(ctx.channel());
+//        System.out.println(allChannels.size());
+//        arrayList.add("str1");
+//        System.out.println(arrayList.size());
+        ctx.channel().writeAndFlush("hello client");
+        System.out.println(ctx.channel().isActive());
     }
     
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("server received: " + msg);
-        ctx.write(msg);
+        ctx.writeAndFlush(msg);
     }
     
     @Override

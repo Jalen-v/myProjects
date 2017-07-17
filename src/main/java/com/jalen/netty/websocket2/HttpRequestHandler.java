@@ -2,6 +2,7 @@ package com.jalen.netty.websocket2;
 
 
 import java.io.RandomAccessFile;
+import java.util.Date;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -32,6 +33,7 @@ class HttpRequestHandler extends
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest msg)
 			throws Exception {
+	    System.out.println("httpRequestHandler: " + new Date() + "  msg:"+msg.getUri());
 		//如果是websocket请求，请求地址uri等于wsuri
 		if (wsUri.equalsIgnoreCase(msg.getUri())) {
 			//将消息转发到下一个ChannelHandler

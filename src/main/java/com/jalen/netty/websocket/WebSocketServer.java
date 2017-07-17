@@ -24,7 +24,7 @@ import io.netty.util.concurrent.ImmediateEventExecutor;
  * @author c.k
  * 
  */
-public class ChatServer {
+public class WebSocketServer {
 
 	private final static ChannelGroup group = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
 	private final EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -46,11 +46,11 @@ public class ChatServer {
 	}
 
 	protected ChannelInitializer<Channel> createInitializer(ChannelGroup group) {
-		return new ChatServerInitializer(group);
+		return new WebSocketServerChannelInitializer(group);
 	}
 
 	public static void main(String[] args) {
-		final ChatServer server = new ChatServer();
+		final WebSocketServer server = new WebSocketServer();
 		ChannelFuture f = server.start(new InetSocketAddress(2048));
 		
 		

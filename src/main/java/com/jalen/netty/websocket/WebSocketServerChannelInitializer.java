@@ -14,10 +14,10 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * @author c.k
  *
  */
-public class ChatServerInitializer extends ChannelInitializer<Channel> {
+public class WebSocketServerChannelInitializer extends ChannelInitializer<Channel> {
 	private final ChannelGroup group;
 	
-	public ChatServerInitializer(ChannelGroup group){
+	public WebSocketServerChannelInitializer(ChannelGroup group){
 		this.group = group;
 	}
 

@@ -38,13 +38,13 @@ public class WebSocketServerTest {
         getChannelsStatus(server.getChannelGroup());
         Thread.sleep(3000);
         System.out.println("begin:");
-        for (int i = 0; i < 10; i++) {
-            server.sendInfoToAll("hi....." + new Date());
-        }
-
-        Thread.sleep(1000 * 6);
-        server.stop();
-        Thread.sleep(1000 * 16);
+//        for (int i = 0; i < 10; i++) {
+//            server.sendInfoToAll("hi....." + new Date());
+//        }
+        Thread.sleep(1000*60);
+//        Thread.sleep(1000 * 6);
+//        server.stop();
+//        Thread.sleep(1000 * 16);
         
     }
 
@@ -54,7 +54,7 @@ public class WebSocketServerTest {
             public void run() {
                 System.out.println("group.size:" + channelGroup.size());
                 for (Channel channel : channelGroup) {
-                    System.out.println(channel.hashCode() + ":" + channel.isActive());
+//                    System.out.println(channel.hashCode() + ":" + channel.isActive());
 
                 }
                 channelGroup.writeAndFlush(new TextWebSocketFrame("hello " + new Date()));

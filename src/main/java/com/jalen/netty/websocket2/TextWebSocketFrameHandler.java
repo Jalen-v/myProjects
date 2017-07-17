@@ -1,5 +1,7 @@
 package com.jalen.netty.websocket2;
 
+import java.util.Date;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -18,6 +20,7 @@ class TextWebSocketFrameHandler extends
 	@Override
 	public void userEventTriggered(ChannelHandlerContext ctx, Object evt)
 			throws Exception {
+	    System.out.println("TextWebScoketFrameHandler: " + new Date() + "  " + evt);
 		//如果WebSocket握手完成
 		if (evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE) {
 			//删除ChannelPipeline中的HttpRequestHandler
